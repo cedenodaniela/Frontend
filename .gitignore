@@ -1,0 +1,25 @@
+# Node / Angular / Ionic
+node_modules/
+dist/
+www/
+.angular/
+coverage/
+npm-debug.log*
+
+# Entorno y secretos: nunca se versionan
+.env
+.env.*
+!.env.example
+*.keystore
+google-services.json
+GoogleService-Info.plist
+
+# IDE y sistema operativo
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

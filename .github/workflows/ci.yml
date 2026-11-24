@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  movil:
+    name: Lint, pruebas y build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detectar si ya existe el proyecto Angular
+        id: proyecto
+        run: echo "existe=$([ -f package.json ] && echo si || echo no)" >> "$GITHUB_OUTPUT"
+
+      - name: Configurar Node 20
+        if: steps.proyecto.outputs.existe == 'si'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Dependencias
+        if: steps.proyecto.outputs.existe == 'si'
+        run: npm ci
+
+      - name: Lint
+        if: steps.proyecto.outputs.existe == 'si'
+        run: npm run lint --if-present
+
+      - name: Pruebas
+        if: steps.proyecto.outputs.existe == 'si'
+        run: npm run test --if-present -- --watch=false
+
+      # Cuando Backend publique el openapi.json, valida el contrato aquí
+      # (AGENTS.md §4 y §12).
