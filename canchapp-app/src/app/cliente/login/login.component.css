@@ -1,0 +1,29 @@
+/* Componentes Ionic ya tienen estilos por defecto */
+ion-content {
+  --background: #F4F6F1;
+}
+
+ion-header {
+  --background: #0F6B3E;
+  --ion-header-text-color: #FFFFFF;
+}
+
+ion-toolbar {
+  --background: #0F6B3E;
+  --ion-color-primary: #0F6B3E;
+}
+
+/* Estilos personalizados para formularios */
+ion-input {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+ion-label {
+  color: #1D5FA8 !important;
+}
+
+/ion-button.primary {
+  --background: #0F6B3E;
+  --color: #FFFFFF;
+}
